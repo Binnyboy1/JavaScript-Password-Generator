@@ -24,6 +24,7 @@ function generatePrompts() {
     // break case #1
     if (length < 8 || length > 128) {
         window.alert("invalid character length");
+        length = 0;
         return;
     }
 
