@@ -88,7 +88,11 @@ function writePassword() {
 
     passwordText.value = password;
 
-    refresher.setAttribute("style", "display: block");
+    if (masterList.length > 0) {
+        refresher.setAttribute("style", "display: block");
+    } else {
+        refresher.setAttribute("style", "display: none");
+    }
 }
 
 function refreshPassword() {
