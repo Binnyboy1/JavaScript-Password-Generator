@@ -104,7 +104,7 @@ Bottom Section starts here
     justify-content: center;
 }
 
-#button-gen {
+.button-gen {
     /* color parameters */
     background-color: var(--primary);
     color: var(--foreground);
@@ -116,6 +116,11 @@ Bottom Section starts here
     margin: 5px;
     padding: 10px;
     cursor: pointer;
+}
+
+#refresh {
+    background-color: orangered;
+    display: none;
 }
 
 button[disabled] {

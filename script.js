@@ -1,5 +1,7 @@
 // Assignment Code
-var gen = document.querySelector("#button-gen");
+var gen = document.querySelector(".button-gen");
+// querySelector will only select the first instance as compared to querySelectorAll
+var refresher = document.querySelector("#refresh");
 var lowerList = "abcdefghijklmnopqrstuvwxyz";
 var upperList = lowerList.toUpperCase();
 var specialList = `\`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~`;
@@ -11,10 +13,12 @@ lowerList = lowerList.split('');
 upperList = upperList.split('');
 var numList = "0123456789".split('');
 specialList = specialList.split('');
-masterList = [];
+var masterList = [];
 
 // Prompt questions
 function generatePrompts() {
+    // Reset
+    masterList = [];
     length = window.prompt("How long should the password be?\n(must be at least 8 characters and no more than 128 characters)");
 
     // break case #1
@@ -82,7 +86,17 @@ function writePassword() {
     var passwordText = document.querySelector("#password");
 
     passwordText.value = password;
+
+    refresher.setAttribute("style", "display: block");
+}
+
+function refreshPassword() {
+    var password = generatePassword();
+    var passwordText = document.querySelector("#password");
+
+    passwordText.value = password;
 }
 
 // Add event listener to generate button
 gen.addEventListener("click", writePassword);
+refresher.addEventListener("click", refreshPassword);
