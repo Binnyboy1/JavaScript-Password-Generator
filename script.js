@@ -3,7 +3,7 @@ var gen = document.querySelector("#button-gen");
 var lowerList = "abcdefghijklmnopqrstuvwxyz";
 var upperList = lowerList.toUpperCase();
 var specialList = `\`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~`;
-/* learned from https://bobbyhadz.com/blog/javascript-check-if-string-contains-special-characters#:~:text=To%20check%20if%20a%20string,special%20character%20and%20false%20otherwise. */
+/* Learned from https://bobbyhadz.com/blog/javascript-check-if-string-contains-special-characters#:~:text=To%20check%20if%20a%20string,special%20character%20and%20false%20otherwise. */
 
 // Variable set up
 var length = 0;     // Must be between 8 and 128
@@ -14,7 +14,7 @@ specialList = specialList.split('');
 masterList = [];
 
 // Prompt questions
-function generatePassword() {
+function generatePrompts() {
     length = window.prompt("How long should the password be?\n(must be at least 8 characters and no more than 128 characters)");
 
     // break case #1
@@ -65,12 +65,23 @@ function generatePassword() {
     return;
 }
 
+function generatePassword() {
+    var sample = "";
+    var masterLength = masterList.length;
+    for (var cnt = 0; cnt < length; cnt++) {
+        sample += masterList[Math.floor(Math.random() * masterLength)];
+    }
+    /* Learned from https://www.programiz.com/javascript/examples/generate-random-strings */
+    return sample;
+}
+
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+    generatePrompts();
+    var password = generatePassword();
+    var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+    passwordText.value = password;
 }
 
 // Add event listener to generate button
